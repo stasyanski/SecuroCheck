@@ -71,12 +71,16 @@ const password_strength_check = (password) => {
     }
 
     // calculate entropy
+    let combinations = Math.pow(password_strength, password.length);
+    console.log(`Combinations: ${combinations}`);
     const entropy = password.length * Math.log2(password_strength);
     console.log(`Password Strength Multiplier: ${password_strength}`);
     console.log(`Entropy: ${entropy.toFixed(2)} bits`);
 
     // estimate cracking time
-    let time = Math.pow(2, entropy) / GUESSES_PER_SECOND;
+    // let time = Math.pow(2, entropy) / GUESSES_PER_SECOND;
+    let time = combinations / Math.pow(10,10);
+    console.log( time);
     console.log(`Estimated Cracking Time: ${formatTime(time)}`);
 
     // check for weak password patterns (e.g., common dictionary words)
