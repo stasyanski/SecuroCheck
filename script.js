@@ -10,7 +10,7 @@ const unicode_start = 128; // unicode starts from 128 for non-ascii characters
 const unicode_end = 1114111; // maximum unicode code point (0x10ffff)
 const common_pass_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt';
 
-const guesses_per_second_gpu = 100000000000; // guesses per second for modern gpu
+const guesses_per_second_gpu = 100000000000; // guesses per second for modern pc, https://nordpass.com/blog/brute-force-attack/
 
 // caching common passwords in localstorage or fetch if not present
 const load_common_passwords = async () => {
