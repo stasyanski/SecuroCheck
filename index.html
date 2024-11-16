@@ -6,13 +6,37 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="script.js" defer></script>
+    <script src="ui.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>SecuroCheck</title>
 </head>
+
+<!--    popup disclaimer / password never stored    -->
+<div class="disclaimer_container">
+    <div class="disclaimer">
+        <p>Your passwords are NEVER stored. Even if they were, we do not know who you are!</p>
+        <button id="close_btn">CLOSE</button>
+    </div>
+</div>
+
 <body>
-    <h1> Password Checker, checking against 100,000 most common passwords and patterns!</h1>
-    <form>
-        <label for="pass_input">Enter your password you want to check:</label>
-        <input type="text" maxlength="256" id="pass_input">
-    </form>
+    <header>
+        <nav>
+            <a href="index.html">SecuroCheck</a>
+            <p></p>
+        </nav>
+    </header>
+
+    <section class="pass_checker_container">
+        <h1>Password Checker, checking against <mark>100,000 most common passwords</mark> and patterns!</h1>
+        <form>
+            <label for="pass_input">Enter your password you want to check:</label>
+            <input type="text" maxlength="256" id="pass_input">
+        </form>
+    </section>
+
+    <footer >
+        <p>To complete</p>
+    </footer>
 </body>
 </html>
