@@ -1,13 +1,19 @@
 const input_field = document.querySelector('#pass_input');
 let common_pass_set = new Set();
 
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
-const lowercase_ascii = alphabet.toLowerCase();
-const uppercase_ascii = alphabet;
+const lowercase_ascii = alphabet;
+const uppercase_ascii = alphabet.toUpperCase();
 const symbols = "!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~\\_";
-const unicode_start = 128; // unicode starts from 128 for non-ascii characters
-const unicode_end = 1114111; // maximum unicode code point (0x10ffff)
+
+// unicode subsets for specific character types
+const emoji_range = [0x1F600, 0x1F64F];  // emoticons
+const math_symbols_range = [0x2200, 0x22FF];  // mathematical operators
+const cjk_range = [0x4E00, 0x9FFF];  // cjk ideographs
+const currency_symbols_range = [0x20A0, 0x20CF];  // currency symbols
+const letter_like_range = [0x1D400, 0x1D7FF];  // letter-like symbols
+
 const common_pass_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt';
 
 const guesses_per_second_gpu = 100000000000; // guesses per second for modern pc, https://nordpass.com/blog/brute-force-attack/
@@ -38,7 +44,12 @@ const password_props = {
     uppercase: false,
     symbols: false,
     whitespace: false,
-    unicode: false
+    unicode: false,
+    emoji: false,
+    math_symbols: false,
+    cjk: false,
+    currency_symbols: false,
+    letter_like: false,
 };
 
 // handle input and trigger strength check
@@ -60,7 +71,17 @@ const update_password_props = (password) => {
         else if (uppercase_ascii.includes(char)) password_props.uppercase = true;
         else if (symbols.includes(char)) password_props.symbols = true;
         else if (char === ' ') password_props.whitespace = true;
-        else if (char.charCodeAt(0) > 127) password_props.unicode = true;  // non-ascii characters
+        else if (char.charCodeAt(0) > 127) {
+            // check for specific unicode subsets
+            const code = char.charCodeAt(0);
+
+            if (is_emoji(code)) password_props.emoji = true;
+            if (is_math_symbol(code)) password_props.math_symbols = true;
+            if (is_cjk(code)) password_props.cjk = true;
+            if (is_currency_symbol(code)) password_props.currency_symbols = true;
+            if (is_letter_like(code)) password_props.letter_like = true;
+            password_props.unicode = true;  // it's a non-ascii character
+        }
     }
 
     password_strength_check(password);
@@ -129,8 +150,24 @@ const check_for_weak_patterns = (password) => {
 
 // calculate range for unicode characters
 const calculate_unicode_range = () => {
-    return unicode_end - unicode_start + 1;  // number of distinct unicode characters
+    let unicode_strength = 0;
+
+    // count characters in different unicode subsets
+    if (password_props.emoji) unicode_strength += emoji_range[1] - emoji_range[0] + 1;
+    if (password_props.math_symbols) unicode_strength += math_symbols_range[1] - math_symbols_range[0] + 1;
+    if (password_props.cjk) unicode_strength += cjk_range[1] - cjk_range[0] + 1;
+    if (password_props.currency_symbols) unicode_strength += currency_symbols_range[1] - currency_symbols_range[0] + 1;
+    if (password_props.letter_like) unicode_strength += letter_like_range[1] - letter_like_range[0] + 1;
+
+    return unicode_strength;
 };
+
+// helper functions to check specific unicode ranges
+const is_emoji = (code) => code >= emoji_range[0] && code <= emoji_range[1];
+const is_math_symbol = (code) => code >= math_symbols_range[0] && code <= math_symbols_range[1];
+const is_cjk = (code) => code >= cjk_range[0] && code <= cjk_range[1];
+const is_currency_symbol = (code) => code >= currency_symbols_range[0] && code <= currency_symbols_range[1];
+const is_letter_like = (code) => code >= letter_like_range[0] && code <= letter_like_range[1];
 
 // attach the event listener to the input field
 input_field.addEventListener("input", get_user_input);
