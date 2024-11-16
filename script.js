@@ -34,6 +34,7 @@ if (localStorage.getItem('common_pass_array')) {
     })();
 }
 
+// array to hold bool values on password complexity calculation
 const array = {
     numbers_bool: false,
     lowercase_bool: false,
@@ -43,15 +44,17 @@ const array = {
     unicode: false
 };
 
+// get user input from the input field
 const get_user_input = () => {
     let input_content = input_field.value;
-    if (input_content !== '' || null) {
+    if (input_content !== '' || input_content !== null) {
         array_set(input_content);
     }
 };
 
+// update the array object based on password content (character types)
 const array_set = (password) => {
-    // reset previous values
+    // reset previous values on input filed update
     array.numbers_bool = array.lowercase_bool = array.uppercase_bool = array.symbols_bool = array.whitespace = array.unicode = false;
 
     // check each character in the password
@@ -73,42 +76,29 @@ const array_set = (password) => {
     password_strength_check(password);
 };
 
-// function to calculate password strength and entropy
+// calculate the password strength and cracking time
 const password_strength_check = (password) => {
     let password_strength = 0;
 
     // add character set sizes based on what the password contains
-    if (array.numbers_bool) {
-        password_strength += numbers.length;
-    }
-    if (array.lowercase_bool) {
-        password_strength += lowercase_ascii.length;
-    }
-    if (array.uppercase_bool) {
-        password_strength += uppercase_ascii.length;
-    }
-    if (array.symbols_bool) {
-        password_strength += symbols.length;
-    }
-    if (array.whitespace) {
-        password_strength += 1; // treat whitespace as a special character
-    }
-    if (array.unicode) {
-        password_strength += calculate_unicode_range(); // dynamically calculate the number of Unicode characters
-    }
+    if (array.numbers_bool) password_strength += numbers.length;
+    if (array.lowercase_bool) password_strength += lowercase_ascii.length;
+    if (array.uppercase_bool) password_strength += uppercase_ascii.length;
+    if (array.symbols_bool) password_strength += symbols.length;
+    if (array.whitespace) password_strength += 1;
+    if (array.unicode) password_strength += calculate_unicode_range();
 
-    // calculate entropy
-    let combinations = Math.pow(password_strength, password.length); // gets the total number of possible combinations
-    console.log(`Combinations: ${combinations}`);
-    const entropy = password.length * Math.log2(password_strength);
+    // log the computed password strength
     console.log(`Password Strength Multiplier: ${password_strength}`);
+
+    // calculate entropy (password complexity)
+    const entropy = password.length * Math.log2(password_strength);
     console.log(`Entropy: ${entropy.toFixed(2)} bits`);
 
     // estimate cracking time
-    let time = combinations / GUESSES_PER_SECOND_GPU; // use GPU guess rate for more accurate estimate
-    console.log(`Estimated Cracking Time: ${formatTime(time)}`);
+    calculate_cracking_time(password, password_strength);
 
-    // check for weak password patterns (e.g., common dictionary words)
+    // check for weak patterns or dictionary words
     check_for_weak_patterns(password);
 };
 
@@ -128,15 +118,36 @@ const formatTime = (seconds) => {
     return `${(seconds / 31536000).toFixed(2)} years`;
 };
 
+// password cracking time estimation
+const calculate_cracking_time = (password, password_strength) => {
+    const length = password.length;
+    let timeInSeconds = Math.pow(password_strength, length) / GUESSES_PER_SECOND_GPU;
+    console.log(`Estimated Cracking Time: ${formatTime(timeInSeconds)}`);
+    return timeInSeconds;
+};
+
+// check for weak patterns
 const check_for_weak_patterns = (password) => {
-    for (let pattern of common_pass_array) {
-        if (password.toLowerCase() === pattern) {
-            console.log(`Weak pattern detected: "${pattern}" we recommend changing your password`);
+    if (common_pass_array.includes(password.toLowerCase()) && password !== '') {
+        console.log(`Weak pattern detected: "${password}" - Consider changing it!`);
+        return;
+    }
+    // Regex
+    const weak_patterns = [
+        /\d{3,}/,   // detects numbers in a sequence like '123', '456'
+        /[a-z]{3,}/, // detects simple letter sequences like 'abc'
+        /([a-z])\1{2,}/, // detects repeated characters like 'aaa', 'bbb'
+    ];
+
+    for (let pattern of weak_patterns) {
+        if (pattern.test(password)) {
+            console.log(`Weak password detected: "${password}" due to patterns`);
             return;
         }
     }
     console.log('No weak patterns detected.');
 };
 
+// attach the event listener to the input field
 input_field.addEventListener("input", get_user_input);
 
