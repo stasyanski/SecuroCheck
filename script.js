@@ -1,10 +1,9 @@
 const input_field = document.querySelector('#pass_input');
 let common_pass_set = new Set();
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
-const lowercase_ascii = alphabet;
-const uppercase_ascii = alphabet.toUpperCase();
+const lowercase_ascii = 'abcdefghijklmnopqrstuvwxyz';
+const uppercase_ascii = lowercase_ascii.toUpperCase();
 const symbols = "!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~\\_";
 
 // unicode subsets for specific character types
