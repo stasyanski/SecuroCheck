@@ -1,13 +1,38 @@
 let input_field = document.querySelector('#pass_input');
+let common_pass_array;
+
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const numbers = '0123456789';
 const lowercase_ascii = alphabet.toLowerCase();
 const uppercase_ascii = alphabet;
 const symbols = "!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~\\_";
-const unicode_characters = 2034 ; // most common unicode characters-- https://gist.github.com/ivandrofly/0fe20773bd712b303f78
-const GUESSES_PER_SECOND = 1000000000; // estimated guesses per second for a supercomputer -- https://nordpass.com/blog/brute-force-attack/
-const common_pass_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt' // most common 100,000 passwords github raw txt file
-let common_pass_array;
+const unicode_start = 128; // unicode starts from 128 for non-ASCII characters
+const unicode_end = 1114111; // maximum unicode code point (0x10FFFF)
+const common_pass_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt'; // 1 million most common passwords Raw Github
+
+const GUESSES_PER_SECOND_GPU = 100000000000; // estimate guesses per second for modern GPU (100 billion guesses per second)
+
+// caching common passwords in localStorage to avoid repeated fetching
+if (localStorage.getItem('common_pass_array')) {
+    common_pass_array = JSON.parse(localStorage.getItem('common_pass_array'));
+} else {
+    (function() {
+        fetch(common_pass_url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failure to reach Raw Github User Content');
+                }
+                return response.text();
+            })
+            .then(text => {
+                common_pass_array = text.split("\n");  // split the text into an array by newlines
+                localStorage.setItem('common_pass_array', JSON.stringify(common_pass_array)); // store in cache
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    })();
+}
 
 const array = {
     numbers_bool: false,
@@ -18,29 +43,12 @@ const array = {
     unicode: false
 };
 
-// iife wrapped function to parse the github raw link, ln9 variable
-(function() {
-    fetch(common_pass_url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failure to reach Raw Github User Content');
-            }
-            return response.text();
-        })
-        .then(text => {
-            common_pass_array = text.split("\n");  // split the text into an array by newlines
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-})();
-
-const get_user_input = () =>{
+const get_user_input = () => {
     let input_content = input_field.value;
     if (input_content !== '' || null) {
-        array_set(input_content)
+        array_set(input_content);
     }
-}
+};
 
 const array_set = (password) => {
     // reset previous values
@@ -59,7 +67,7 @@ const array_set = (password) => {
         } else if (char === ' ') {
             array.whitespace = true;
         } else if (char.charCodeAt(0) > 127) {
-            array.unicode = true; // check for Unicode characters (non-ASCII)
+            array.unicode = true; // check for unicode characters (non-ASCII)
         }
     }
     password_strength_check(password);
@@ -86,7 +94,7 @@ const password_strength_check = (password) => {
         password_strength += 1; // treat whitespace as a special character
     }
     if (array.unicode) {
-        password_strength += unicode_characters; // consider Unicode characters
+        password_strength += calculate_unicode_range(); // dynamically calculate the number of Unicode characters
     }
 
     // calculate entropy
@@ -97,11 +105,18 @@ const password_strength_check = (password) => {
     console.log(`Entropy: ${entropy.toFixed(2)} bits`);
 
     // estimate cracking time
-    let time = combinations / GUESSES_PER_SECOND;
+    let time = combinations / GUESSES_PER_SECOND_GPU; // use GPU guess rate for more accurate estimate
     console.log(`Estimated Cracking Time: ${formatTime(time)}`);
 
     // check for weak password patterns (e.g., common dictionary words)
     check_for_weak_patterns(password);
+};
+
+// function to calculate the number of distinct Unicode characters available
+const calculate_unicode_range = () => {
+    const unicode_range = unicode_end - unicode_start + 1;
+    console.log(`Unicode characters range: ${unicode_range}`);
+    return unicode_range; // return the number of distinct Unicode characters from 128 to 1114111
 };
 
 // function to format the estimated cracking time in a human-readable format
@@ -115,7 +130,7 @@ const formatTime = (seconds) => {
 
 const check_for_weak_patterns = (password) => {
     for (let pattern of common_pass_array) {
-        if (password.toLowerCase() == pattern) {
+        if (password.toLowerCase() === pattern) {
             console.log(`Weak pattern detected: "${pattern}" we recommend changing your password`);
             return;
         }
