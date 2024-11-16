@@ -18,7 +18,7 @@ body {
     pointer-events: none;
 
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-5px);
     animation: slide_up 3s ease-out forwards;
 
     display: flex;
@@ -41,11 +41,11 @@ body {
 @keyframes slide_up {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-5px);
     }
     66% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-5px);
     }
     100% {
         opacity: 1;
