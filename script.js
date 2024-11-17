@@ -125,7 +125,10 @@ const format_time = (seconds) => {
     if (seconds < 31536000) return `${(seconds / 86400).toFixed(2)} days`;
     return `${(seconds / 31536000).toFixed(2)} years`;
 };
+const display_text = () => {
+    // going to display the text on the screen to the user 
 
+}
 // check for common passwords and weak patterns
 const check_for_weak_patterns = (password) => {
     if (common_pass_set.has(password.toLowerCase()) && password !== '') {

@@ -13,6 +13,7 @@ body {
     height: 100vh;
 }
 
+
 /* Disclaimer Container Animation */
 .disclaimer_container {
     pointer-events: none;
@@ -159,8 +160,14 @@ nav img {
 .pass_checker_container {
     height: 90vh;
     background-color: rebeccapurple;
+    text-align: center;
+    padding-top: 11vh;
+    font-weight: bold;
+    font-size: 1.2em;
 }
-
+.pass_checker_container h1 {
+    margin-top: 1vh;
+}
 /* Footer Styles */
 footer {
     height: 4vh;
