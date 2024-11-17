@@ -108,28 +108,51 @@ body {
     box-shadow: none;
 }
 
-/* Navigation Styles */
-nav {
-    height: 6vh;
-    width: 100vw;
-    background-color: #6c3082;
-
+/* Header */
+header {
+    height: 10vh;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation Styles */
+nav {
+    height: fit-content;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 
     font-family: Tomorrow, sans-serif;
     font-size: 1.8em;
     color: white;
-    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
 /* Link Styles inside Navigation */
-a {
+nav a {
     text-decoration: none;
-    color: white;
-    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    color: #404040;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+nav p {
+    font-size: 0.7em;
+    color: #454545;
+}
+
+nav img {
+    width: 27px;
+    height: 27px;
 }
 
 /* Password Checker Container Styles */
