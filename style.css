@@ -10,7 +10,7 @@
 
 /* Body Styles */
 body {
-    height: 100vh;
+    height: 200vh;
 }
 
 
@@ -158,19 +158,52 @@ nav img {
 
 /* Password Checker Container Styles */
 .pass_checker_container {
-    height: 90vh;
-    background-color: rebeccapurple;
+    height: 40vh;
+    background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
     text-align: center;
-    padding-top: 11vh;
     font-weight: bold;
     font-size: 1.2em;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
-.pass_checker_container h1 {
-    margin-top: 1vh;
+
+.pass_checker_container form input {
+    width: 50%;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: ghostwhite;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.pass_checker_container form input:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+    box-shadow: none;
+}
+
+.pass_checker_container form input::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.pass_checker_container form input:hover {
+    border-bottom-color: #aaa;
+}
+
+
 /* Footer Styles */
 footer {
-    height: 4vh;
+    height: 5vh;
     background-color: darkolivegreen;
 }
 
