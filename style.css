@@ -8,6 +8,10 @@
     margin: 0;
 }
 
+html {
+    font-size: 16px;
+}
+
 /* Body Styles */
 body {
     height: 200vh;
@@ -125,7 +129,7 @@ nav {
     width: 100vw;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
@@ -141,12 +145,18 @@ nav a {
 
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-nav p {
+nav a h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav p, nav a p {
     font-size: 0.7em;
     color: #454545;
 }
@@ -169,13 +179,40 @@ nav img {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+}
+
+
+.pass_checker_container h1, .pass_checker_container form label {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: whitesmoke 0px 0px 2px;
+}
+
+.pass_checker_container h1 {
+    font-size: 4.2em;
+}
+
+.pass_checker_container form label {
+    font-size: 1.5em;
+}
+
+.pass_checker_container form span {
+    font-size: 1em;
+    color: lightseagreen;
+    text-shadow:
+            0.02em 0.02em 0 #000,
+            -0.02em 0.02em 0 #000,
+            -0.02em -0.02em 0 #000,
+            0.02em -0.02em 0 #000;
 }
 
 .pass_checker_container form input {
-    width: 50%;
-    padding: 12px 20px;
-    font-size: 16px;
+    margin-top: 2em;
+    box-shadow: whitesmoke 0px 0px 6px;
+
+    width: 75%;
+    padding: 1em 1.5em;
+    font-size: 1.2em;
     color: #333;
     background-color: ghostwhite;
     border: none;
@@ -187,8 +224,8 @@ nav img {
 
 .pass_checker_container form input:focus {
     outline: none;
-    border-bottom-color: #007bff;
-    box-shadow: none;
+    border-bottom-color: lightseagreen;
+    box-shadow: whitesmoke 0px 0px 10px;
 }
 
 .pass_checker_container form input::placeholder {
