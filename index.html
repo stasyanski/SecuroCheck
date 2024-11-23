@@ -6,13 +6,46 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="script.js" defer></script>
+    <script src="ui.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <title>SecuroCheck</title>
 </head>
+
+<!--    popup disclaimer / password never stored    -->
+<div class="disclaimer_container">
+    <div class="disclaimer">
+        <p>Your passwords are NEVER stored. Even if they were, we do not know who you are!</p>
+        <button id="close_btn">CLOSE</button>
+    </div>
+</div>
+
 <body>
-    <h1> Password Checker, checking against 100,000 most common passwords and patterns!</h1>
-    <form>
-        <label for="pass_input">Enter your password you want to check:</label>
-        <input type="text" maxlength="256" id="pass_input">
-    </form>
+    <header>
+        <nav>
+            <a href="index.html">
+                <h5> <img src="img/favicon.ico" alt="logo"> SecuroCheck</h5>
+                <p>password checker</p>
+            </a>
+            <p>FAQ</p>
+        </nav>
+    </header>
+
+    <section class="pass_checker_container">
+        <h1>How Secure is Your Password?</h1>
+        <form>
+            <label for="pass_input"> <span>&#x2714;</span> Find Out and Check Against 100,000 MOST COMMON Password and Patterns!</label>
+            <input type="text" maxlength="256" id="pass_input" placeholder="ENTER PASSWORD">
+        </form>
+        <p>This website does not collect any data about the passwords you enter.</p>
+    </section>
+
+    <section class="pass_faq">
+
+    </section>
+
+    <footer>
+        <a href="https://github.com/stasyanski/SecuroCheck" target="_blank">github repository</a>
+    </footer>
 </body>
 </html>
