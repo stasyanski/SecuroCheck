@@ -154,6 +154,7 @@ nav a h5 {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: normal;
 }
 
 nav p, nav a p {
@@ -168,8 +169,9 @@ nav img {
 
 /* Password Checker Container Styles */
 .pass_checker_container {
-    height: 40vh;
-    background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    height: 50vh;
+    background-color: #c471f5;
+    transition: background-color 0.2s ease; /* 0.5s duration, ease timing function */
 
     text-align: center;
     font-weight: bold;
@@ -182,7 +184,7 @@ nav img {
 }
 
 
-.pass_checker_container h1, .pass_checker_container form label {
+.pass_checker_container h1, .pass_checker_container form label, .pass_checker_container p {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: whitesmoke 0px 0px 2px;
@@ -207,8 +209,9 @@ nav img {
 }
 
 .pass_checker_container form input {
-    margin-top: 2em;
     box-shadow: whitesmoke 0px 0px 6px;
+    margin-top: 2em;
+    margin-bottom: 2em;
 
     width: 75%;
     padding: 1em 1.5em;

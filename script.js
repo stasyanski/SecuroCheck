@@ -1,6 +1,11 @@
+// variable to store weak patterns - variable to store time to crack
+window.time_to_crack = undefined; window.weak_pattern = [false, null, null];
+
+// define used throughout vars
 const input_field = document.querySelector('#pass_input');
 let common_pass_set = new Set();
 
+// check against
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
 const lowercase_ascii = alphabet;
@@ -14,8 +19,15 @@ const cjk_range = [0x4E00, 0x9FFF];  // cjk ideographs
 const currency_symbols_range = [0x20A0, 0x20CF];  // currency symbols
 const letter_like_range = [0x1D400, 0x1D7FF];  // letter-like symbols
 
-const common_pass_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt';
+// check against weak patterns
+const weak_patterns = [
+    /\d{3,}/,   // detects numbers in a sequence like '123'
+    /[a-z]{3,}/, // detects simple letter sequences like 'abc'
+    /([a-z])\1{2,}/, // detects repeated characters like 'aaa'
+];
 
+// ambiguous data
+const common_pass_url = 'https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt';
 const guesses_per_second_gpu = 100000000000; // guesses per second for modern pc, https://nordpass.com/blog/brute-force-attack/
 
 // caching common passwords in localstorage or fetch if not present
@@ -34,7 +46,6 @@ const load_common_passwords = async () => {
         }
     }
 };
-
 load_common_passwords();
 
 // initial state of password character properties
@@ -111,12 +122,6 @@ const password_strength_check = (password) => {
     check_for_weak_patterns(password);
 };
 
-// estimate cracking time
-const calculate_cracking_time = (password, strength) => {
-    const time_in_seconds = Math.pow(strength, password.length) / guesses_per_second_gpu;
-    console.log(`estimated cracking time: ${format_time(time_in_seconds)}`);
-};
-
 // format time in a human-readable format
 const format_time = (seconds) => {
     if (seconds < 60) return `${seconds.toFixed(2)} seconds`;
@@ -125,30 +130,43 @@ const format_time = (seconds) => {
     if (seconds < 31536000) return `${(seconds / 86400).toFixed(2)} days`;
     return `${(seconds / 31536000).toFixed(2)} years`;
 };
-const display_text = () => {
-    // going to display the text on the screen to the user 
 
-}
+// estimate cracking time
+const calculate_cracking_time = (password, strength) => {
+    let x = Math.pow(strength, password.length) / guesses_per_second_gpu;
+    window.time_to_crack = format_time(x)
+
+    // output the time to crack
+    console.log(`time: ${window.time_to_crack}`);
+};
+
 // check for common passwords and weak patterns
 const check_for_weak_patterns = (password) => {
     if (common_pass_set.has(password.toLowerCase()) && password !== '') {
-        console.log(`weak pattern detected: "${password}" - consider changing it!`);
+        window.weak_pattern[0] = true
+        window.weak_pattern[1] = password
+
+        // output the weak password
+        console.log(`weak password: "${password}"`);
         return;
     }
 
-    const weak_patterns = [
-        /\d{3,}/,   // detects numbers in a sequence like '123'
-        /[a-z]{3,}/, // detects simple letter sequences like 'abc'
-        /([a-z])\1{2,}/, // detects repeated characters like 'aaa'
-    ];
-
     for (let pattern of weak_patterns) {
         if (pattern.test(password)) {
-            console.log(`weak password detected: "${password}" due to patterns`);
+            // push the weak pattern to the array
+            window.weak_pattern[0] = true
+            window.weak_pattern[2] = pattern
+
+            // output the weak pattern
+            console.log(`weak pattern: "${pattern}"`);
             return;
         }
     }
-    console.log('no weak patterns detected.');
+
+    // reset the array
+    window.weak_pattern[0] = false;
+    window.weak_pattern[1] = null;
+    window.weak_pattern[2] = null;
 };
 
 // calculate range for unicode characters
