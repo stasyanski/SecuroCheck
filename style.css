@@ -31,8 +31,6 @@ body {
     justify-content: center;
     align-items: end;
 
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -71,6 +69,7 @@ body {
     padding: 8px;
     margin: 8px;
     border-radius: 15px;
+    box-shadow: 0 1px 3px 0 #757575, 0 1px 2px 0 #757575;
     background-color: whitesmoke;
 }
 
@@ -238,6 +237,12 @@ nav img {
 
 .pass_checker_container form input:hover {
     border-bottom-color: #aaa;
+}
+
+/* Pass Faq */
+.pass_faq {
+    height: 145vh;
+    background-color: darkgoldenrod;
 }
 
 

@@ -124,11 +124,15 @@ const password_strength_check = (password) => {
 
 // format time in a human-readable format
 const format_time = (seconds) => {
-    if (seconds < 60) return `${seconds.toFixed(2)} seconds`;
-    if (seconds < 3600) return `${(seconds / 60).toFixed(2)} minutes`;
-    if (seconds < 86400) return `${(seconds / 3600).toFixed(2)} hours`;
-    if (seconds < 31536000) return `${(seconds / 86400).toFixed(2)} days`;
-    return `${(seconds / 31536000).toFixed(2)} years`;
+    if (seconds > 31556952000000) {
+        return `more than 10 million years`;
+    }
+
+    if (seconds < 60) return `${seconds.toFixed(0)} seconds`;
+    if (seconds < 3600) return `${(seconds / 60).toFixed(0)} minutes`;
+    if (seconds < 86400) return `${(seconds / 3600).toFixed(0)} hours`;
+    if (seconds < 31536000) return `${(seconds / 86400).toFixed(0)} days`;
+    return `${(seconds / 31536000).toFixed(0)} years`;
 };
 
 // estimate cracking time
