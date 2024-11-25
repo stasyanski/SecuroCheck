@@ -27,7 +27,12 @@
                 <h5> <img src="img/favicon.ico" alt="logo"> SecuroCheck</h5>
                 <p>password checker</p>
             </a>
-            <p>FAQ</p>
+
+            <!--        <a href="https://github.com/stasyanski/SecuroCheck" target="_blank">github repository</a>-->
+
+            <a href="#scroll_to">
+                <p>FAQ</p>
+            </a>
         </nav>
     </header>
 
@@ -40,12 +45,44 @@
         <p>This website does not collect any data about the passwords you enter.</p>
     </section>
 
-    <section class="pass_faq">
-
+    <section class="pass_faq_container">
+        <h1 id="scroll_to">Frequently Asked Questions</h1>
+        <div class="pass_faq_div">
+            <h3>Why should I trust this website?</h3>
+            <p>It's up to your instinct whether you want to trust this website or not.
+                However, it is hosted on github pages, which only supports static websites.
+                Therefore, this website is entirely serverless, and the source code is available in the footer.
+                Also, even if we stored your password, we would have no clue who you are!</p>
+        </div>
+        <div class="pass_faq_div">
+            <h3>How do you estimate how long a computer would take to crack my password?</h3>
+            <p>Via brute-force, which is trying out all possible combinations of characters possible until the right password is found.
+                Lists of common passwords and dictionaries are used for brute-forcing, which is why we detect patterns and common passwords for you.</p>
+        </div>
+        <div class="pass_faq_div">
+            <h3>How do we check leaked passwords?</h3>
+            <p>We use lists of common passwords from <a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a>
+                which is a trustworthy and reputable source, with a lot of contributions.</p>
+        </div>
+        <div class="pass_faq_div">
+            <h3>Why is password security important?</h3>
+            <p>Not having secure passwords can have a great impact on you.
+                Hackers will be able to log in to your account and steal your data, including your name, address, phone number and bank details.
+                They can use this information to try and steal money for personal gain, directly from you, or steal your identity.
+                This is a major compromise on your privacy. Moreover, depending on the service, hackers gaining access to your account could be much worse.
+                If they log in to your IP security cameras, they may record footage of you which could be used for blackmail.</p>
+        </div>
+        <div class="pass_faq_div">
+            <h3>How can I ensure my passwords are secure?</h3>
+            <p>Check your password using our tool, as well as:
+                <br> • Ideally at least 16 characters or more.
+                <br> • A combination of both uppercase and lowercase letters.
+                <br> • Include numbers and characters, such as $, %, #, @.
+                <br> • Make it random - LMN4uj25_#jr is a better password than GoldenFish8#.
+                <br> • No patterns or consecutive characters, such as AAA or 123.
+                <br> • Ideally use different passwords on different services.
+            </p>
+        </div>
     </section>
-
-    <footer>
-        <a href="https://github.com/stasyanski/SecuroCheck" target="_blank">github repository</a>
-    </footer>
 </body>
 </html>

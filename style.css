@@ -10,11 +10,12 @@
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 /* Body Styles */
 body {
-    height: 200vh;
+    height: 160vh;
 }
 
 
@@ -36,7 +37,7 @@ body {
     position: fixed;
 
     /* Font settings */
-    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: .95em;
 }
 
@@ -75,14 +76,12 @@ body {
 
 /* Button Styles inside the Disclaimer Box */
 .disclaimer button {
-    background-color: #FFFFFF;
+    background-color: #FFF;
     border: 0;
     border-radius: .5rem;
     box-sizing: border-box;
-    color: #111827;
-    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: .875rem;
-    font-weight: 600;
     line-height: 1.25rem;
     padding: .25rem .33rem;
     text-align: center;
@@ -98,7 +97,7 @@ body {
 
 /* Hover Effect for Button */
 .disclaimer button:hover {
-    background-color: rgb(249, 250, 251);
+    background-color: ghostwhite;
 }
 
 /* Focus State for Button */
@@ -115,7 +114,7 @@ body {
 /* Header */
 header {
     height: 10vh;
-    background-color: whitesmoke;
+    background-color: #E7CEE3;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -132,15 +131,14 @@ nav {
     justify-content: space-around;
     align-items: center;
 
-    font-family: Tomorrow, sans-serif;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.8em;
-    color: white;
 }
 
 /* Link Styles inside Navigation */
 nav a {
     text-decoration: none;
-    color: #404040;
+    color: #505050;
 
 
     display: flex;
@@ -150,15 +148,16 @@ nav a {
 }
 
 nav a h5 {
+    font-weight: 450;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: normal;
 }
 
-nav p, nav a p {
+nav a p {
+    font-weight: 400;
     font-size: 0.7em;
-    color: #454545;
+    color: #505050;
 }
 
 nav img {
@@ -168,8 +167,8 @@ nav img {
 
 /* Password Checker Container Styles */
 .pass_checker_container {
-    height: 50vh;
-    background-color: #c471f5;
+    height: 60vh;
+    background-color: #c39aa6;
     transition: background-color 0.2s ease; /* 0.5s duration, ease timing function */
 
     text-align: center;
@@ -240,15 +239,38 @@ nav img {
 }
 
 /* Pass Faq */
-.pass_faq {
-    height: 145vh;
-    background-color: darkgoldenrod;
+.pass_faq_container {
+    height: 100vh;
+    background-color: #e0e1e9;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.pass_faq_div {
+    width: 45%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 
-/* Footer Styles */
-footer {
-    height: 5vh;
-    background-color: darkolivegreen;
+.pass_faq_container h1 {
+    color: #505050;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.7em;
+}
+
+.pass_faq_div h3 {
+    color: #505050;
+    margin-bottom: 0.5em;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.3em;
+}
+
+.pass_faq_div p {
+    color: #505050;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.1em;
 }
 
