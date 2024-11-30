@@ -22,7 +22,7 @@
 
 ## Usage
 
-- **GitHub Pages:**
+- **GitHub Pages: https://stasyanski.github.io/SecuroCheck/**
 
 ## Important!
 
