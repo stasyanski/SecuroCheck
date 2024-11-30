@@ -160,6 +160,22 @@ nav a p {
     color: #505050;
 }
 
+nav div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+nav div a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.35em;
+    margin-left: 0.35em;
+}
+
 nav img {
     width: 27px;
     height: 27px;
