@@ -10,33 +10,27 @@
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 /* Body Styles */
 body {
-    height: 200vh;
 }
-
 
 /* Disclaimer Container Animation */
 .disclaimer_container {
     pointer-events: none;
-
     opacity: 0;
     transform: translateY(-5px);
     animation: slide_up 3s ease-out forwards;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: end;
-
     width: 100vw;
     height: 100vh;
     position: fixed;
-
-    /* Font settings */
-    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: .95em;
 }
 
@@ -59,30 +53,27 @@ body {
 /* Disclaimer Box Styles */
 .disclaimer {
     pointer-events: all;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     width: 40%;
     padding: 8px;
     margin: 8px;
     border-radius: 15px;
-    box-shadow: 0 1px 3px 0 #757575, 0 1px 2px 0 #757575;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border: 2px solid #e0e1e9;
     background-color: whitesmoke;
 }
 
 /* Button Styles inside the Disclaimer Box */
 .disclaimer button {
-    background-color: #FFFFFF;
+    background-color: #FFF;
     border: 0;
     border-radius: .5rem;
     box-sizing: border-box;
-    color: #111827;
-    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: .875rem;
-    font-weight: 600;
     line-height: 1.25rem;
     padding: .25rem .33rem;
     text-align: center;
@@ -91,14 +82,13 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-
     /* Shadow effect */
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* Hover Effect for Button */
 .disclaimer button:hover {
-    background-color: rgb(249, 250, 251);
+    background-color: ghostwhite;
 }
 
 /* Focus State for Button */
@@ -115,7 +105,7 @@ body {
 /* Header */
 header {
     height: 10vh;
-    background-color: whitesmoke;
+    background-color: #E7CEE3;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -126,23 +116,18 @@ header {
 nav {
     height: fit-content;
     width: 100vw;
-
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
-    font-family: Tomorrow, sans-serif;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.8em;
-    color: white;
 }
 
 /* Link Styles inside Navigation */
 nav a {
     text-decoration: none;
-    color: #404040;
-
-
+    color: #505050;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,15 +135,32 @@ nav a {
 }
 
 nav a h5 {
+    font-weight: 450;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: normal;
 }
 
-nav p, nav a p {
+nav a p {
+    font-weight: 400;
     font-size: 0.7em;
-    color: #454545;
+    color: #505050;
+}
+
+nav div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+nav div a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.35em;
+    margin-left: 0.35em;
 }
 
 nav img {
@@ -168,20 +170,17 @@ nav img {
 
 /* Password Checker Container Styles */
 .pass_checker_container {
-    height: 50vh;
-    background-color: #c471f5;
+    height: 60vh;
+    background-color: #c39aa6;
     transition: background-color 0.2s ease; /* 0.5s duration, ease timing function */
-
     text-align: center;
     font-weight: bold;
     font-size: 1.2em;
-
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .pass_checker_container h1, .pass_checker_container form label, .pass_checker_container p {
     color: white;
@@ -211,7 +210,6 @@ nav img {
     box-shadow: whitesmoke 0px 0px 6px;
     margin-top: 2em;
     margin-bottom: 2em;
-
     width: 75%;
     padding: 1em 1.5em;
     font-size: 1.2em;
@@ -240,15 +238,259 @@ nav img {
 }
 
 /* Pass Faq */
-.pass_faq {
-    height: 145vh;
-    background-color: darkgoldenrod;
+.pass_faq_container {
+    height: 100vh;
+    background-color: #e0e1e9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-
-/* Footer Styles */
-footer {
-    height: 5vh;
-    background-color: darkolivegreen;
+.pass_faq_div {
+    width: 45%;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
+
+.pass_faq_container h1 {
+    color: #505050;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.7em;
+    text-align: center;
+}
+
+.pass_faq_div h3 {
+    color: #505050;
+    margin-bottom: 0.5em;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.3em;
+}
+
+.pass_faq_div p {
+    color: #505050;
+    font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.1em;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1600px), (max-height: 850px) {
+    /* For tablets and smaller screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .disclaimer {
+        width: 60%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 3.2em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1.2em;
+    }
+
+    .pass_checker_container form input {
+        width: 85%;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 85%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 1200px), (max-height: 757px) {
+    /* For tablets and smaller screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .disclaimer {
+        width: 60%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 3.2em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1.2em;
+    }
+
+    .pass_checker_container form input {
+        width: 90%;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 90%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px), (max-height: 665px) {
+    /* For mobile screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .disclaimer {
+        width: 80%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 2.5em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1.1em;
+    }
+
+    .pass_checker_container form input {
+        width: 95%;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 95%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px), (max-height: 572px) {
+    /* For very small screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .disclaimer {
+        width: 95%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 2em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1em;
+    }
+
+    .pass_checker_container form input {
+        width: 95%;
+        margin: 1em 0 1em 0;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 95%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1em;
+    }
+}
+
 

@@ -23,7 +23,7 @@ function apply_styles(background_color, text_shadow) {
 function handle_input() {
     // check if input is empty
     if (input.value == null || input.value === '') {
-        apply_styles('#c471f5', 'whitesmoke 0px 0px 2px');
+        apply_styles('#c39aa6', 'whitesmoke 0px 0px 2px');
         output_p.innerHTML = 'This website does not collect any data about the passwords you enter.'
     } else {
         // assign to local var to avoid issues with accessing window var
