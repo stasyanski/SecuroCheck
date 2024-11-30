@@ -9,7 +9,7 @@
 
 - **A variety of features:**
 - **Color-feedback:** Based on password strength, which is calculated using character categories
-- **Cracking time estimation:** Estimates how long it would take a modern GPU to crack the password using brute force.\
+- **Cracking time estimation:** Estimates how long it would take a modern GPU to crack the password using brute force.
 - **Character category detection:** Identifies the use of different character types, which strengthens passwords.
 - **Weak pattern detection:** Detects weak patterns, like sequences and repeated characters.
 - **Common password detection:** Compare against commonly used passwords using a pre-compiled list of 10 million passwords.
@@ -26,7 +26,7 @@
 
 ## Important!
 
-- **Perfomance:** The password strength calculation and cracking time estimation uses a modern GPU's brute force speed, 100 trillion guesses per second. This however, is quite subjective.
+- **Performance:** The password strength calculation and cracking time estimation uses a modern GPU's brute force speed, 100 trillion guesses per second. This however, is quite subjective.
 - **Common password list:** https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt
 
 ## Contributing and feedback
