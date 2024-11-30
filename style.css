@@ -15,28 +15,21 @@ html {
 
 /* Body Styles */
 body {
-    height: 160vh;
 }
-
 
 /* Disclaimer Container Animation */
 .disclaimer_container {
     pointer-events: none;
-
     opacity: 0;
     transform: translateY(-5px);
     animation: slide_up 3s ease-out forwards;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: end;
-
     width: 100vw;
     height: 100vh;
     position: fixed;
-
-    /* Font settings */
     font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: .95em;
 }
@@ -60,17 +53,16 @@ body {
 /* Disclaimer Box Styles */
 .disclaimer {
     pointer-events: all;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     width: 40%;
     padding: 8px;
     margin: 8px;
     border-radius: 15px;
-    box-shadow: 0 1px 3px 0 #757575, 0 1px 2px 0 #757575;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border: 2px solid #e0e1e9;
     background-color: whitesmoke;
 }
 
@@ -90,7 +82,6 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-
     /* Shadow effect */
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
@@ -125,12 +116,10 @@ header {
 nav {
     height: fit-content;
     width: 100vw;
-
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
     font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.8em;
 }
@@ -139,8 +128,6 @@ nav {
 nav a {
     text-decoration: none;
     color: #505050;
-
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -186,17 +173,14 @@ nav img {
     height: 60vh;
     background-color: #c39aa6;
     transition: background-color 0.2s ease; /* 0.5s duration, ease timing function */
-
     text-align: center;
     font-weight: bold;
     font-size: 1.2em;
-
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .pass_checker_container h1, .pass_checker_container form label, .pass_checker_container p {
     color: white;
@@ -226,7 +210,6 @@ nav img {
     box-shadow: whitesmoke 0px 0px 6px;
     margin-top: 2em;
     margin-bottom: 2em;
-
     width: 75%;
     padding: 1em 1.5em;
     font-size: 1.2em;
@@ -258,7 +241,6 @@ nav img {
 .pass_faq_container {
     height: 100vh;
     background-color: #e0e1e9;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -275,6 +257,7 @@ nav img {
     color: #505050;
     font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.7em;
+    text-align: center;
 }
 
 .pass_faq_div h3 {
@@ -289,4 +272,225 @@ nav img {
     font-family: Tomorrow, ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.1em;
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1600px), (max-height: 850px) {
+    /* For tablets and smaller screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .disclaimer {
+        width: 60%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 3.2em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1.2em;
+    }
+
+    .pass_checker_container form input {
+        width: 85%;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 85%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 1200px), (max-height: 757px) {
+    /* For tablets and smaller screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .disclaimer {
+        width: 60%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 3.2em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1.2em;
+    }
+
+    .pass_checker_container form input {
+        width: 90%;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 90%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px), (max-height: 665px) {
+    /* For mobile screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .disclaimer {
+        width: 80%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 2.5em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1.1em;
+    }
+
+    .pass_checker_container form input {
+        width: 95%;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 95%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px), (max-height: 572px) {
+    /* For very small screens */
+    header {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .disclaimer {
+        width: 95%;
+    }
+
+    .pass_checker_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_checker_container h1 {
+        font-size: 2em;
+    }
+
+    .pass_checker_container form label {
+        font-size: 1em;
+    }
+
+    .pass_checker_container form input {
+        width: 95%;
+        margin: 1em 0 1em 0;
+    }
+
+    .pass_faq_container {
+        height: fit-content;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .pass_faq_div {
+        width: 95%;
+        height: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .pass_faq_div h3 {
+        font-size: 1em;
+    }
+}
+
 
