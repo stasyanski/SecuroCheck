@@ -29,14 +29,6 @@
 - **Performance:** The password strength calculation and cracking time estimation uses a modern GPU's brute force speed, 100 trillion guesses per second. This however, is quite subjective.
 - **Common password list:** https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt
 
-## Contributing and feedback
-
-Contributions are always welcome! We would love for others to contribute to this project, and it's improvement.
-
-Feedback is also extremely valuable. We are open to any feedback you have.
-
-- To contribute or provide feedback, contact us at [will provide a method soon]
-
 ## License
 
 The MIT License lets you do almost anything you want with this project, even making and distributing closed source versions.
